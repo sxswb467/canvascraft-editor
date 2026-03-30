@@ -10,9 +10,23 @@ A GitHub-ready portfolio project built to demonstrate the exact interaction patt
 - zoom, fit-to-view, minimap, and snap-to-grid layout support
 - keyboard shortcuts and persistent editor state
 - image-based redaction with canvas pixel manipulation
-- AI chat side panel that reshapes the editor layout when opened
+- a local layout assistant that reviews slides and applies deterministic edits
 
 This demo is intentionally built as a **production-style React + TypeScript project** with a flat and readable component structure so it is easy to extend inside an existing codebase.
+
+## Preview
+
+### Full editor overview
+
+![CanvasCraft Editor overview](docs/screenshots/overview.png)
+
+### Local layout assistant
+
+![CanvasCraft Editor local assistant](docs/screenshots/local-assistant.png)
+
+### Redaction workflow
+
+![CanvasCraft Editor redaction lab](docs/screenshots/redaction-lab.png)
 
 ## Stack
 
@@ -32,7 +46,7 @@ This repo is designed to show that you can work on:
 - direct-manipulation interfaces with drag behavior
 - componentized React architecture
 - canvas-based tooling for image workflows
-- AI-assisted product surfaces that coexist with complex layouts
+- local assistant workflows that coexist with complex layouts
 - maintainable TypeScript code in a non-trivial UI
 
 ## Features
@@ -60,11 +74,12 @@ The lower panel demonstrates image editing on a canvas using:
 - reset capability
 - direct `ImageData` manipulation
 
-### 4. AI sidecar panel
-The right-hand AI chat panel:
+### 4. Local assistant panel
+The right-hand assistant panel:
 - keeps per-slide chat history
 - offers quick layout actions
-- can add objects and reorganize layouts
+- can review the current slide from live local state
+- can rewrite headlines, add support blocks, and reorganize layouts
 - changes the editor layout when opened or closed
 
 ### 5. Production-style quality pass
