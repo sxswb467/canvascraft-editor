@@ -6,6 +6,9 @@ A GitHub-ready portfolio project built to demonstrate the exact interaction patt
 - drag-and-drop slide sorting
 - infinite-scroll canvas workspace
 - draggable inline-editable overlays
+- resize handles and layering controls
+- zoom, fit-to-view, minimap, and snap-to-grid layout support
+- keyboard shortcuts and persistent editor state
 - image-based redaction with canvas pixel manipulation
 - AI chat side panel that reshapes the editor layout when opened
 
@@ -44,9 +47,11 @@ The left sidebar supports:
 ### 2. Infinite-scroll canvas
 The main workspace is a large scrollable canvas with:
 - draggable overlay blocks
+- resize handles
 - inline editing using `contentEditable`
 - multiple overlay types (`text`, `callout`, `sticky`)
 - selection and delete actions
+- zoom, fit-to-view, a minimap, and snapping support
 
 ### 3. Redaction lab
 The lower panel demonstrates image editing on a canvas using:
@@ -61,6 +66,14 @@ The right-hand AI chat panel:
 - offers quick layout actions
 - can add objects and reorganize layouts
 - changes the editor layout when opened or closed
+
+### 5. Production-style quality pass
+The demo also includes:
+- local persistence via `localStorage`
+- undo / redo history
+- keyboard shortcuts for duplicate, delete, deselect, and nudging
+- a selected-object properties panel
+- automated regression tests plus an accessibility smoke check
 
 ## Local setup
 
@@ -82,6 +95,12 @@ For a production build:
 ```bash
 npm run build
 npm run preview
+```
+
+For validation:
+
+```bash
+npm run check
 ```
 
 ## Suggested talking points when applying

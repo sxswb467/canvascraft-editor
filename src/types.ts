@@ -9,6 +9,7 @@ export type OverlayItem = {
   height: number;
   text: string;
   color: string;
+  zIndex: number;
 };
 
 export type Slide = {
@@ -25,3 +26,32 @@ export type ChatMessage = {
 };
 
 export type ChatThread = Record<string, ChatMessage[]>;
+
+export type GuideState = {
+  x: number | null;
+  y: number | null;
+};
+
+export type ViewportState = {
+  zoom: number;
+  snapToGrid: boolean;
+  guides: GuideState;
+};
+
+export type EditorSnapshot = {
+  slides: Slide[];
+  activeSlideId: string;
+  selectedObjectId: string | null;
+  chatThreads: ChatThread;
+};
+
+export type PersistedEditorState = EditorSnapshot & {
+  viewport: Pick<ViewportState, 'zoom' | 'snapToGrid'>;
+};
+
+export type EditorState = {
+  past: EditorSnapshot[];
+  present: EditorSnapshot;
+  future: EditorSnapshot[];
+  viewport: ViewportState;
+};
