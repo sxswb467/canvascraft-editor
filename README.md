@@ -1,18 +1,21 @@
-# CanvasCraft Editor Demo
+# CanvasCraft Editor
 
-A GitHub-ready portfolio project built to demonstrate the exact interaction patterns often required in complex React editor work:
+CanvasCraft Editor is a complex editor-style web app I built with React and TypeScript to showcase direct-manipulation UI work: sortable slides, a large canvas workspace, inline editing, layout controls, redaction tooling, and a local assistant that can review and adjust the active slide.
 
-- collapsible slide list panel
-- drag-and-drop slide sorting
-- infinite-scroll canvas workspace
-- draggable inline-editable overlays
-- resize handles and layering controls
-- zoom, fit-to-view, minimap, and snap-to-grid layout support
-- keyboard shortcuts and persistent editor state
-- image-based redaction with canvas pixel manipulation
-- a local layout assistant that reviews slides and applies deterministic edits
+I wrote this project as a portfolio piece to demonstrate the kind of frontend engineering I enjoy most: interaction-heavy product UI that goes beyond static pages and requires careful state management, input handling, and component architecture.
 
-This demo is intentionally built as a **production-style React + TypeScript project** with a flat and readable component structure so it is easy to extend inside an existing codebase.
+## Project description
+
+This project simulates a presentation and content-composition tool where a user can:
+
+- manage slides from a collapsible sortable rail
+- edit content directly on a large scrollable canvas
+- drag, resize, layer, and rearrange overlay blocks
+- use a properties panel to fine-tune selected elements
+- redact sensitive content with canvas-based image tools
+- get deterministic layout help from a local assistant
+
+I structured it like a production-style React application rather than a one-file prototype, so the editor logic, UI surface, persistence, and test coverage are easier to understand and extend.
 
 ## Preview
 
@@ -38,9 +41,9 @@ This demo is intentionally built as a **production-style React + TypeScript proj
 
 > Note: I packaged this repo with Vite for frictionless local testing, but the editor shell is client-side React code that ports directly into a Next.js route or app-shell environment.
 
-## Why this is a strong portfolio piece
+## What this project highlights
 
-This repo is designed to show that you can work on:
+With this project, I wanted to show strength in:
 
 - interactive editor UI, not just static pages
 - direct-manipulation interfaces with drag behavior
@@ -68,7 +71,7 @@ The main workspace is a large scrollable canvas with:
 - zoom, fit-to-view, a minimap, and snapping support
 
 ### 3. Redaction lab
-The lower panel demonstrates image editing on a canvas using:
+The lower panel handles image editing on a canvas using:
 - pixelation brush
 - blackout brush
 - reset capability
@@ -83,7 +86,7 @@ The right-hand assistant panel:
 - changes the editor layout when opened or closed
 
 ### 5. Production-style quality pass
-The demo also includes:
+I also included:
 - local persistence via `localStorage`
 - undo / redo history
 - keyboard shortcuts for duplicate, delete, deselect, and nudging
@@ -103,7 +106,7 @@ Open:
 http://localhost:4177
 ```
 
-The project now ignores generated output and dependencies via `.gitignore`, so a clean handoff should only include source files plus the lockfile.
+The project ignores generated output and dependencies via `.gitignore`, so the repo stays focused on source files plus the lockfile.
 
 For a production build:
 
@@ -118,8 +121,8 @@ For validation:
 npm run check
 ```
 
-## Suggested talking points when applying
+## Notes on implementation
 
 - `dnd-kit` was used for sortable slide management.
 - Freeform overlay dragging was implemented with direct pointer math because editor-style interactions usually need tighter control than list-oriented drag-and-drop abstractions.
-- React was used to build the full editor shell: slide rail, canvas workspace, inline editing, chat sidecar, and redaction tool UI.
+- React was used to build the full editor shell: slide rail, canvas workspace, inline editing, assistant panel, and redaction tool UI.
