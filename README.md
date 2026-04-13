@@ -19,6 +19,8 @@ I structured it like a production-style React application rather than a one-file
 
 ## Preview
 
+These preview assets reflect the current routed editor shell and can be regenerated with `scripts/capture-readme-screenshots.mjs`.
+
 ### Full editor overview
 
 ![CanvasCraft Editor overview](docs/screenshots/overview.png)
@@ -119,6 +121,12 @@ For validation:
 
 ```bash
 npm run check
+```
+
+To refresh the README screenshots against a running local editor:
+
+```bash
+CANVASCRAFT_EDITOR_URL=http://127.0.0.1:4177/#/edit/slide-1 node ./scripts/capture-readme-screenshots.mjs
 ```
 
 ## Notes on implementation
