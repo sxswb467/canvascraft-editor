@@ -188,7 +188,8 @@ export type EditorAction =
   | { type: 'select-slide'; slideId: string }
   | { type: 'select-object'; objectId: string | null }
   | { type: 'commit-history'; snapshot: EditorSnapshot }
-  | { type: 'add-slide' }
+  | { type: 'add-slide'; slideId?: string }
+  | { type: 'delete-slide'; slideId: string }
   | { type: 'reorder-slides'; activeId: string; overId: string }
   | { type: 'add-object'; kind: OverlayKind; x: number; y: number; preset?: Partial<OverlayItem> }
   | { type: 'update-object'; objectId: string; patch: Partial<OverlayItem> }
@@ -287,6 +288,23 @@ export function editorReducer(state: EditorState, action: EditorAction): EditorS
     };
   }
 
+  if (action.type === 'delete-slide') {
+    if (state.present.slides.length <= 1) return state; // keep at least one slide
+    const remaining = state.present.slides.filter((s) => s.id !== action.slideId);
+    const nextActiveId =
+      state.present.activeSlideId === action.slideId
+        ? (remaining[0]?.id ?? '')
+        : state.present.activeSlideId;
+    const { [action.slideId]: _removed, ...remainingThreads } = state.present.chatThreads;
+    return pushHistory(state, {
+      ...state.present,
+      slides: remaining,
+      activeSlideId: nextActiveId,
+      selectedObjectId: null,
+      chatThreads: remainingThreads,
+    });
+  }
+
   if (action.type === 'reorder-slides') {
     const oldIndex = state.present.slides.findIndex((slide) => slide.id === action.activeId);
     const newIndex = state.present.slides.findIndex((slide) => slide.id === action.overId);
@@ -300,7 +318,7 @@ export function editorReducer(state: EditorState, action: EditorAction): EditorS
   if (action.type === 'add-slide') {
     const nextIndex = state.present.slides.length + 1;
     const newSlide: Slide = {
-      id: `slide-${uid()}`,
+      id: action.slideId ?? `slide-${uid()}`,
       title: `Concept ${nextIndex}`,
       accent: ['#0f766e', '#2563eb', '#7c3aed', '#dc2626'][state.present.slides.length % 4],
       objects: [
