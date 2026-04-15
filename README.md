@@ -18,6 +18,15 @@ This type of system is commonly used for:
 - Creative operations platforms
 - White-label publishing or slide-building products
 
+## Why this matters
+
+This type of system is useful for:
+
+- Teams building browser-based editors instead of static CRUD interfaces
+- Content operations workflows that need direct manipulation and layout control
+- Product companies creating presentation, publishing, or design tooling
+- Platforms that need rich editing experiences without desktop software
+
 ## Preview
 
 These preview assets reflect the current routed editor shell and can be regenerated with `scripts/capture-readme-screenshots.mjs`.
@@ -42,6 +51,23 @@ These preview assets reflect the current routed editor shell and can be regenera
 - Properties panel for selected object controls
 - Canvas-based redaction tooling for image workflows
 - Local assistant panel for deterministic layout suggestions
+
+## Architecture overview
+
+CanvasCraft is intentionally designed as a browser-first editor:
+
+Frontend (React + TypeScript)
+  ↓
+Interaction layer (selection, drag, resize, keyboard commands)
+  ↓
+Processing layer (canvas tools, local assistant actions, layout updates)
+  ↓
+Storage (browser state + localStorage)
+
+Updates happen through:
+
+- Direct pointer and keyboard interactions
+- Client-side state updates across the editor shell
 
 ## Technology snapshot
 
