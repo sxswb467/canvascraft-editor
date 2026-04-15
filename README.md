@@ -1,21 +1,22 @@
 # CanvasCraft Editor
 
-CanvasCraft Editor is a complex editor-style web app I built with React and TypeScript to showcase direct-manipulation UI work: sortable slides, a large canvas workspace, inline editing, layout controls, redaction tooling, and a local assistant that can review and adjust the active slide.
+CanvasCraft Editor is a production-style browser editor built to showcase complex interaction design in a client-facing format. It simulates a content-composition workspace where users can manage slides, manipulate layout blocks, edit directly on canvas, and use a local assistant to refine the active design.
 
-I wrote this project as a portfolio piece to demonstrate the kind of frontend engineering I enjoy most: interaction-heavy product UI that goes beyond static pages and requires careful state management, input handling, and component architecture.
+## What this project demonstrates
 
-## Project description
+- Direct-manipulation UI patterns for browser-based editors
+- Rich state handling for drag, resize, selection, and layout workflows
+- Productized editing experiences beyond simple form-driven CRUD interfaces
+- Frontend architecture for complex, interaction-heavy React applications
 
-This project simulates a presentation and content-composition tool where a user can:
+## Use case
 
-- manage slides from a collapsible sortable rail
-- edit content directly on a large scrollable canvas
-- drag, resize, layer, and rearrange overlay blocks
-- use a properties panel to fine-tune selected elements
-- redact sensitive content with canvas-based image tools
-- get deterministic layout help from a local assistant
+This type of system is commonly used for:
 
-I structured it like a production-style React application rather than a one-file prototype, so the editor logic, UI surface, persistence, and test coverage are easier to understand and extend.
+- Presentation and document editors
+- Internal content-composition tools
+- Creative operations platforms
+- White-label publishing or slide-building products
 
 ## Preview
 
@@ -33,67 +34,75 @@ These preview assets reflect the current routed editor shell and can be regenera
 
 ![CanvasCraft Editor redaction lab](docs/screenshots/redaction-lab.png)
 
-## Stack
+## Key capabilities
+
+- Sortable slide rail with quick creation and active-state management
+- Large canvas workspace with draggable and resizable overlay blocks
+- Inline editing with selection, layering, and keyboard interactions
+- Properties panel for selected object controls
+- Canvas-based redaction tooling for image workflows
+- Local assistant panel for deterministic layout suggestions
+
+## Technology snapshot
 
 - React
 - TypeScript
 - Vite
 - dnd-kit
-- native Canvas API
+- Native Canvas API
 
-> Note: I packaged this repo with Vite for frictionless local testing, but the editor shell is client-side React code that ports directly into a Next.js route or app-shell environment.
-
-## What this project highlights
-
-With this project, I wanted to show strength in:
-
-- interactive editor UI, not just static pages
-- direct-manipulation interfaces with drag behavior
-- componentized React architecture
-- canvas-based tooling for image workflows
-- local assistant workflows that coexist with complex layouts
-- maintainable TypeScript code in a non-trivial UI
+> Note: The project is packaged with Vite for frictionless local testing, but the editor shell is client-side React code that ports cleanly into a Next.js route or application shell.
 
 ## Features
 
 ### 1. Collapsible slide list
+
 The left sidebar supports:
-- collapse / expand behavior
-- sortable slide cards using `dnd-kit`
-- active slide selection
-- quick slide creation
+
+- Collapse and expand behavior
+- Sortable slide cards using `dnd-kit`
+- Active slide selection
+- Quick slide creation
 
 ### 2. Infinite-scroll canvas
+
 The main workspace is a large scrollable canvas with:
-- draggable overlay blocks
-- resize handles
-- inline editing using `contentEditable`
-- multiple overlay types (`text`, `callout`, `sticky`)
-- selection and delete actions
-- zoom, fit-to-view, a minimap, and snapping support
+
+- Draggable overlay blocks
+- Resize handles
+- Inline editing using `contentEditable`
+- Multiple overlay types (`text`, `callout`, `sticky`)
+- Selection and delete actions
+- Zoom, fit-to-view, a minimap, and snapping support
 
 ### 3. Redaction lab
+
 The lower panel handles image editing on a canvas using:
-- pixelation brush
-- blackout brush
-- reset capability
-- direct `ImageData` manipulation
+
+- Pixelation brush
+- Blackout brush
+- Reset capability
+- Direct `ImageData` manipulation
 
 ### 4. Local assistant panel
+
 The right-hand assistant panel:
-- keeps per-slide chat history
-- offers quick layout actions
-- can review the current slide from live local state
-- can rewrite headlines, add support blocks, and reorganize layouts
-- changes the editor layout when opened or closed
+
+- Keeps per-slide chat history
+- Offers quick layout actions
+- Can review the current slide from live local state
+- Can rewrite headlines, add support blocks, and reorganize layouts
+- Changes the editor layout when opened or closed
 
 ### 5. Production-style quality pass
-I also included:
-- local persistence via `localStorage`
-- undo / redo history
-- keyboard shortcuts for duplicate, delete, deselect, and nudging
-- a selected-object properties panel
-- automated regression tests plus an accessibility smoke check
+
+The project also includes:
+
+- Local persistence via `localStorage`
+- Undo and redo history
+- Keyboard shortcuts for duplicate, delete, deselect, and nudging
+- A selected-object properties panel
+- Automated regression tests plus an accessibility smoke check
 
 ## Local setup
 
@@ -107,8 +116,6 @@ Open:
 ```bash
 http://localhost:4177
 ```
-
-The project ignores generated output and dependencies via `.gitignore`, so the repo stays focused on source files plus the lockfile.
 
 For a production build:
 
@@ -131,6 +138,6 @@ CANVASCRAFT_EDITOR_URL=http://127.0.0.1:4177/#/edit/slide-1 node ./scripts/captu
 
 ## Notes on implementation
 
-- `dnd-kit` was used for sortable slide management.
-- Freeform overlay dragging was implemented with direct pointer math because editor-style interactions usually need tighter control than list-oriented drag-and-drop abstractions.
-- React was used to build the full editor shell: slide rail, canvas workspace, inline editing, assistant panel, and redaction tool UI.
+- `dnd-kit` is used for sortable slide management.
+- Freeform overlay dragging uses direct pointer math because editor-style interactions usually need tighter control than list-oriented drag-and-drop abstractions.
+- React powers the full editor shell: slide rail, canvas workspace, inline editing, assistant panel, and redaction tool UI.
