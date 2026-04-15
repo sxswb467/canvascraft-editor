@@ -56,13 +56,12 @@ These preview assets reflect the current routed editor shell and can be regenera
 
 CanvasCraft is intentionally designed as a browser-first editor:
 
-Frontend (React + TypeScript)
-  ↓
-Interaction layer (selection, drag, resize, keyboard commands)
-  ↓
-Processing layer (canvas tools, local assistant actions, layout updates)
-  ↓
-Storage (browser state + localStorage)
+```mermaid
+flowchart TD
+    A["Frontend (React + TypeScript)"] --> B["Interaction layer (selection, drag, resize, keyboard commands)"]
+    B --> C["Processing layer (canvas tools, local assistant actions, layout updates)"]
+    C --> D["Storage (browser state + localStorage)"]
+```
 
 Updates happen through:
 
